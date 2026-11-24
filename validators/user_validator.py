@@ -1,3 +1,5 @@
+import re
+
 def validar_usuario(datos):
 
     if not isinstance(datos, dict):
@@ -20,4 +22,7 @@ def validar_usuario(datos):
     if len(email.strip()) > 150:
         return "El email no puede superar los 150 caracteres"
 
+    if not re.fullmatch(r"[A-Za-z0-9._%+-]+@gmail\.com", email.strip(), re.IGNORECASE):
+        return "El formato debe ser @gmail.com"
+    
     return None
